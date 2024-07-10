@@ -19,3 +19,4 @@ from mouseinfo import mouseInfo
 mouseInfo()
 
 ### Desmarque a caixa "3 Sec. Button Delay" e pressione F6 para obter o X e Y do mouse 
+### O pyautogui.locateOnScreen não encontra a imagem screenshot no monitor secundário, apenas no primário
