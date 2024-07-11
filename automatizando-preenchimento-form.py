@@ -21,7 +21,7 @@ for linha in sheet_produtos.iter_rows(min_row=2):
     pyperclip.copy(nome_produto)
 
     # Localiza o campo através do printscreen
-    file_nome_produto = 'nome_produto.png'
+    file_nome_produto = 'imgs/nome_produto.png'
     if os.path.isfile(file_nome_produto):
         scrNomeProduto = pyautogui.locateOnScreen(file_nome_produto, confidence=0.8)
         if scrNomeProduto is not None:
@@ -67,7 +67,7 @@ for linha in sheet_produtos.iter_rows(min_row=2):
     ############################################
 
     # Pressiona o botão próximo no formulário
-    file_proximo = 'btn_proximo.png'
+    file_proximo = 'imgs/btn_proximo.png'
     if os.path.isfile(file_proximo):
         scrProximo = pyautogui.locateOnScreen(file_proximo, confidence=0.8)
         if scrProximo is not None:
@@ -87,7 +87,7 @@ for linha in sheet_produtos.iter_rows(min_row=2):
     preco = linha[6].value
     pyperclip.copy(preco)
     # Localiza o campo através do printscreen
-    file_preco = 'preco_produto.png'
+    file_preco = 'imgs/preco_produto.png'
     if os.path.isfile(file_nome_produto):
         scrPreco = pyautogui.locateOnScreen(file_preco, confidence=0.8)
         if scrPreco is not None:
@@ -122,28 +122,33 @@ for linha in sheet_produtos.iter_rows(min_row=2):
     tamanho = linha[10].value
     pyautogui.hotkey('tab')
     pyautogui.hotkey('alt', 'down')
+    sleep(0.5)
+
     # Localiza o campo através do printscreen
-    file_peq = 'tam_pequeno.png'
-    file_med = 'tam_medio.png'
-    file_grd = 'tam_grande.png'
+    file_peq = 'imgs/tam_pequeno.png'
+    file_med = 'imgs/tam_medio.png'
+    file_grd = 'imgs/tam_grande.png'
+
     if os.path.isfile(file_peq) | os.path.isfile(file_med) | os.path.isfile(file_grd):
-        scrPreco = pyautogui.locateOnScreen(file_preco, confidence=0.8)
         # Seleciona o tamanho na lista
         if tamanho == 'Pequeno':
-            if file_peq is not None:
-                pyautogui.click(file_peq, duration=0.5)
+            scrPeq = pyautogui.locateOnScreen(file_peq, confidence=0.8)
+            if scrPeq is not None:
+                pyautogui.click(scrPeq, duration=0.5)
             else:
                 print('Imagem não encontrada na tela #peq.')
                 quit()
         elif tamanho == 'Médio':
-            if file_med is not None:
-                pyautogui.click(file_med, duration=0.5)
+            scrMed = pyautogui.locateOnScreen(file_med, confidence=0.8)
+            if scrMed is not None:
+                pyautogui.click(scrMed, duration=0.5)
             else:
                 print('Imagem não encontrada na tela #med.')
                 quit()
-        else:
-            if file_grd is not None:
-                pyautogui.click(file_grd, duration=0.5)
+        elif tamanho == 'Grande':
+            scrGrd = pyautogui.locateOnScreen(file_grd, confidence=0.8)
+            if scrGrd is not None:
+                pyautogui.click(scrGrd, duration=0.5)
             else:
                 print('Imagem não encontrada na tela #grd.')
                 quit()
@@ -160,7 +165,7 @@ for linha in sheet_produtos.iter_rows(min_row=2):
     ############################################
 
     # Pressiona o botão próximo no formulário
-    file_proximo = 'btn_proximo.png'
+    file_proximo = 'imgs/btn_proximo.png'
     if os.path.isfile(file_proximo):
         scrProximo = pyautogui.locateOnScreen(file_proximo, confidence=0.8)
         if scrProximo is not None:
@@ -180,7 +185,7 @@ for linha in sheet_produtos.iter_rows(min_row=2):
     fabricante = linha[12].value
     pyperclip.copy(fabricante)
     # Localiza o campo através do printscreen
-    file_fabricante = 'fabricante.png'
+    file_fabricante = 'imgs/fabricante.png'
     if os.path.isfile(file_fabricante):
         scrFab = pyautogui.locateOnScreen(file_fabricante, confidence=0.8)
         if scrFab is not None:
@@ -220,7 +225,7 @@ for linha in sheet_produtos.iter_rows(min_row=2):
     ############################################
 
     # Pressiona o botão concluir no formulário
-    file_concluir = 'btn_concluir.png'
+    file_concluir = 'imgs/btn_concluir.png'
     if os.path.isfile(file_concluir):
         scrConcluir = pyautogui.locateOnScreen(file_concluir, confidence=0.8)
         if scrConcluir is not None:
@@ -232,14 +237,16 @@ for linha in sheet_produtos.iter_rows(min_row=2):
         print('Imagem não localizada no diretório #conc.')
         quit()
 
+    sleep(aguardar)
+
     # Pressiona o botão confirmar inclusão
-    file_ok = 'btn_ok.png'
+    file_ok = 'imgs/btn_ok.png'
     if os.path.isfile(file_ok):
         scrOk = pyautogui.locateOnScreen(file_ok, confidence=0.8)
         if scrOk is not None:
             pyautogui.click(scrOk, duration=0.5)
-            sleep(1)
-            pyautogui.click(scrOk, duration=0.5)
+            # sleep(1)
+            # pyautogui.click(scrOk, duration=0.5)
         else:
             print('Imagem não encontrada "ok".')
             quit()
@@ -250,7 +257,7 @@ for linha in sheet_produtos.iter_rows(min_row=2):
     sleep(aguardar)
 
     # Pressiona o botão de incluir novo cadastro
-    file_add = 'btn_add.png'
+    file_add = 'imgs/btn_add.png'
     if os.path.isfile(file_add):
         scrAdd = pyautogui.locateOnScreen(file_add, confidence=0.8)
         if scrAdd is not None:
