@@ -8,7 +8,7 @@ https://www.youtube.com/@DevAprender
 https://cadastro-produtos-devaprender.netlify.app/
 
 ## Instalando dependências
-pip install openpyxl pyautogui pyperclip mouseinfo Pillow
+pip install openpyxl pyautogui pyperclip mouseinfo Pillow opencv-python
 
 ## Plugins Excel para VS Code
 Excel Viewer
