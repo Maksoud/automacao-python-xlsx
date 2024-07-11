@@ -81,37 +81,3 @@ for linha in sheet_produtos.iter_rows(min_row=2):
             pressionar_botao_acao('imgs/btn_concluir.png')
             pressionar_botao_acao('imgs/btn_ok.png')
             pressionar_botao_acao('imgs/btn_add.png')
-
-############################################
-############################################
-# Mapa de ações
-
-# linha[0] = Nome do produto (imgs/nome_produto.png)
-# linha[1] = Descrição
-# linha[2] = Categoria
-# linha[3] = Código
-# linha[4] = Peso
-# linha[5] = Dimensões
-
-# Nova aba
-
-# linha[6]  = Preço (imgs/preco_produto.png)
-# linha[7]  = Quantidade
-# linha[8]  = Validade
-# linha[9]  = Cor
-# linha[10] = Tamanho (imgs/tam_pequeno.png, imgs/tam_medio.png, imgs/tam_grande.png)
-# linha[11] = Material
-
-# Nova aba
-
-# linha[12] = Fabricante (imgs/fabricante.png)
-# linha[13] = País de origem
-# linha[14] = Observações
-# linha[15] = Código de barras
-# linha[16] = Localização
-
-# Botão concluir (imgs/btn_concluir.png)
-# Botão ok (imgs/btn_ok.png)
-# Botão adicionar novo cadastro (imgs/btn_add.png)
-
-############################################
