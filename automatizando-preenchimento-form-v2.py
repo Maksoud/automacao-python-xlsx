@@ -17,9 +17,21 @@ def pressionar_botao_acao(fileImg, aguardar = 2):
 
     # Verifica se o arquivo existe no diretório
     if os.path.isfile(fileImg):
-        
-        # Localiza o botão através do printscreen
-        scrBtn = pyautogui.locateOnScreen(fileImg, confidence=0.8)
+
+        attempts = 0
+        while attempts < 3:
+            try:        
+                # Localiza o botão através do printscreen
+                scrBtn = pyautogui.locateOnScreen(fileImg, confidence=0.8)
+                if scrBtn is not None:
+                    break
+            except pyautogui.ImageNotFoundException:
+                # Tente novamente
+                sleep(2)
+                attempts += 1
+                print("Tentando novamente encontrar imagem... Tentativa " + str(attempts))
+        else:
+            print("Imagem não encontrada após 3 tentativas.")
         
         # Clica no botão
         if scrBtn is not None:
@@ -53,11 +65,11 @@ for linha in sheet_produtos.iter_rows(min_row=2):
 
             # Seleciona o tamanho do produto na lista
             if item.value == 'Pequeno':
-                pressionar_botao_acao('imgs/tam_pequeno.png', 0.5)
+                pressionar_botao_acao('imgs/tam_pequeno.png', 1)
             elif item.value == 'Médio':
-                pressionar_botao_acao('imgs/tam_medio.png', 0.5)
+                pressionar_botao_acao('imgs/tam_medio.png', 1)
             elif item.value == 'Grande':
-                pressionar_botao_acao('imgs/tam_grande.png', 0.5)
+                pressionar_botao_acao('imgs/tam_grande.png', 1)
 
         elif item.column == 13: # Fabricante
             pressionar_botao_acao('imgs/fabricante.png', 1)
